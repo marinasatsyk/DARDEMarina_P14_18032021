@@ -1,0 +1,28 @@
+* {
+    // font-family: 'Montserrat', 'Times New Roman' sans-serif;
+    font-family: 'Times New Roman' sans-serif;
+    font-weight: 400;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+#root {
+    width: 100%;
+}
+#wrapper_body {
+    min-height: 100vh;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: stretch;
+    // justify-content: space-between;
+    // overflow: hidden;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+// .container {
+//     text-align: center;
+// }

@@ -1,0 +1,40 @@
+// .input-wrapper {
+//     display: flex;
+//     flex-direction: column;
+//     margin-bottom: 1rem;
+//     label {
+//         font-weight: bold;
+//     }
+//     input {
+//         padding: 5px;
+//         font-size: 1.2rem;
+//     }
+// }
+// .address {
+//     border: 1px solid black;
+// }
+
+form {
+    display: block;
+    margin-top: 0em;
+    margin-block-end: 1em;
+    // background: #353536;
+}
+
+.input-wrapper {
+    // display: flex;
+    // flex-direction: column;
+    // margin-bottom: 1rem;
+    label {
+        display: block;
+        margin-top: 1rem;
+        margin-bottom: 10px;
+    }
+    // input {
+    //     padding: 5px;
+    //     font-size: 1.2rem;
+    // }
+}
+.address {
+    margin-top: 10px;
+}

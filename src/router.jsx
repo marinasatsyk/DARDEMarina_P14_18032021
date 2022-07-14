@@ -1,3 +1,4 @@
+//@ts-check
 import React from 'react';
 import {
     BrowserRouter as Router,
@@ -6,8 +7,10 @@ import {
     useLocation,
     Navigate,
 } from 'react-router-dom';
-import Create from './pages/create';
-import ListEmployee from './pages/list_employees';
+import './App.css';
+import Create from './assets/style/pages/create';
+import ListEmployee from './assets/style/pages/list_employees';
+import DataPickerElement from './composants/dataPicker';
 import Error from './composants/error';
 import DataProvider from './constants/context';
 
