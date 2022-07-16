@@ -18,6 +18,7 @@ const ManagedInput = ({
             return {
                 ...prevValue,
                 [name]: value,
+                //[name]: type === 'date' ? new Date(value).toISOString() : value,
             };
         });
         {
