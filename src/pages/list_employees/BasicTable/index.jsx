@@ -1,7 +1,14 @@
 import React, { useMemo } from 'react';
-import { useTable, usePagination, useColumnOrder } from 'react-table';
+import {
+    useTable,
+    usePagination,
+    useColumnOrder,
+    useGlobalFilter,
+    useSortBy,
+} from 'react-table';
 import MOCK_DATA from '../../../MOCK_DATA/MOCK_DATA.json';
 import { COLUMNS } from '../columns';
+import GlobalFilter from '../globalFilter';
 
 const BasicTable = () => {
     /**
@@ -14,7 +21,6 @@ const BasicTable = () => {
     // const columns = useMemo(() => GROUPED_COLUMNS, []);
 
     const data = useMemo(() => MOCK_DATA, []);
-    console.log(data);
 
     const {
         getTableProps,
@@ -31,34 +37,44 @@ const BasicTable = () => {
         pageCount,
         setPageSize,
         state,
+        setGlobalFilter,
         prepareRow,
     } = useTable(
         {
             columns,
             data,
         },
+
+        useGlobalFilter,
+        useSortBy,
         usePagination
     );
 
-    const { pageIndex, pageSize } = state;
+    const { pageIndex, pageSize, globalFilter } = state;
 
     return (
         <>
-            <div className="select_wrapper">
-                Show{' '}
-                <select
-                    value={pageSize}
-                    onChange={(e) => setPageSize(Number(e.target.value))}
-                >
-                    {[10, 25, 50, 100].map((pageSize) => (
-                        <option key={pageSize} value={pageSize}>
-                            {pageSize}
-                        </option>
-                    ))}
-                </select>
-                {console.log(pageIndex)}
-                {console.log(pageSize)}
-                entries
+            <div className="header-table">
+                <div className="select_wrapper">
+                    Show{' '}
+                    <select
+                        value={pageSize}
+                        onChange={(e) => setPageSize(Number(e.target.value))}
+                    >
+                        {[10, 25, 50, 100].map((pageSize) => (
+                            <option key={pageSize} value={pageSize}>
+                                {pageSize}
+                            </option>
+                        ))}
+                    </select>
+                    {console.log(pageIndex)}
+                    {console.log(pageSize)}
+                    entries
+                </div>
+                <GlobalFilter
+                    filter={globalFilter}
+                    setFilter={setGlobalFilter}
+                />
             </div>
 
             <table {...getTableProps()}>
@@ -67,8 +83,19 @@ const BasicTable = () => {
                     {headerGroups.map((headerGroup) => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
                             {headerGroup.headers.map((column) => (
-                                <th {...column.getHeaderProps()}>
+                                <th
+                                    {...column.getHeaderProps(
+                                        column.getSortByToggleProps()
+                                    )}
+                                >
                                     {column.render('Header')}
+                                    <span>
+                                        {column.isSorted
+                                            ? column.isSortedDesc
+                                                ? '🔽'
+                                                : '🔼'
+                                            : ''}
+                                    </span>
                                 </th>
                             ))}
                         </tr>

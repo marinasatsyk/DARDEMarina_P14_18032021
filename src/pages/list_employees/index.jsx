@@ -9,7 +9,7 @@ import BasicTable from './BasicTable';
 const ListEmployee = () => {
     return (
         <div id="employee-div" className="container">
-            <h1>Current Employees</h1>
+            <h1 className='employee-title'>Current Employees</h1>
             <BasicTable />
             <div className="home">
                 <Link to={'/'}>Home</Link>

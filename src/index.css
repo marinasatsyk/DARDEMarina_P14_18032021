@@ -68,8 +68,26 @@ tfoot td {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
-  background-color: #04aa6d;
+  background-color: #181a4d;
   color: white;
+}
+
+.employee-title {
+  text-align: center;
+}
+
+.header-table {
+  display: flex;
+  justify-content: space-between;
+}
+
+.table-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.home {
+  text-align: center;
 }
 
 /*# sourceMappingURL=index.css.map */
