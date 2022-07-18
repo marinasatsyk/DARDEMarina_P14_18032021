@@ -2,22 +2,36 @@ import { Link } from 'react-router-dom';
 import DataPickerElement from '../../composants/dataPicker';
 import Form from '../../composants/form_create';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useState } from 'react';
+import Modal from '../../composants/modal';
 
 /**
  * creation employee form page element
  * @returns {React.ReactElement} page creation employee form
  */
 const Create = () => {
+    //states for open modal page
+    const [openModal, setOpenModal] = useState(false);
+
     return (
-        <section id="create-div" className="container">
-            <header>
-                <h1 className="title">HRnet</h1>
-            </header>
+        <>
+            <section id="create-div" className="container">
+                <header>
+                    <h1 className="create-title title">HRnet</h1>
+                </header>
 
-            <Link to="/eployees">View Current Employees</Link>
+                <Link to="/eployees">View Current Employees</Link>
 
-            <Form />
-        </section>
+                <Form setOpenModal={setOpenModal} />
+            </section>
+            {openModal && (
+                <Modal
+                    openModal={openModal}
+                    setOpenModal={setOpenModal}
+                    message="Employee Created!"
+                />
+            )}
+        </>
     );
 };
 export default Create;

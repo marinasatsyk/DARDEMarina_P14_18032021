@@ -12,7 +12,7 @@ const Validator = {
     name: (n) => n.trim().length > 1,
 };
 
-const Form = () => {
+const Form = ({ setOpenModal }) => {
     const { listEmployees, setListEmployees } = useContext(Context);
 
     const [user, setUser] = useState({
@@ -41,6 +41,7 @@ const Form = () => {
             const newAr = prevFormData.concat(user);
             return newAr;
         });
+        setOpenModal(true);
     };
 
     return (
