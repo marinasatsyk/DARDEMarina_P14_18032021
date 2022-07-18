@@ -46,7 +46,7 @@ export const COLUMNS = [
     },
 
     {
-        Header: 'ZipCode',
+        Header: 'Zip Code',
         accessor: 'zipCode',
     },
 ];

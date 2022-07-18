@@ -1,9 +1,25 @@
+#employee-div {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
 table {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 5px !important;
 }
 
+.previous,
+.next {
+    border-radius: 3px;
+    cursor: pointer;
+}
+table th {
+    font-weight: bold;
+}
 table td,
 table th {
     border: 1px solid #ddd;
@@ -15,7 +31,8 @@ table tr:nth-child(even) {
 }
 
 table tr:hover {
-    background-color: #ddd;
+    // background-color: #ddd;
+    background: rgba(#181a4d, 0.4);
 }
 
 table th,
@@ -29,16 +46,45 @@ tfoot td {
 
 .employee-title {
     text-align: center;
+    font-weight: bold;
 }
 .header-table {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 25px;
 }
 .table-footer {
-    display: flex;
-    justify-content: space-between;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    .top-group {
+        display: flex;
+        justify-content: space-between;
+    }
 }
 
 .home {
     text-align: center;
+}
+
+.page-counter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+
+    .active {
+        background: linear-gradient(to bottom, #fff 0%, #181a4d 100%);
+    }
+    .numbOfPage {
+        border: 1px solid #181a4d;
+        border-radius: 2px;
+        min-height: 25px;
+        min-width: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        &:hover {
+            background: rgba(#181a4d, 0.3);
+        }
+    }
 }

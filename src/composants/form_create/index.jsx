@@ -28,12 +28,15 @@ const Form = () => {
     });
 
     //add an eemployee in list of employees for display it in table
+
     const handleSubmit = (event) => {
         event.preventDefault();
         // setIsEmailValidate(Validator.email(email));
         // setIsPasswordIsValidate(Validator.password(password));
         // setIsFirstNameIsValidate(Validator.name(firstName));
         // setIsLastNameIsValidate(Validator.name(lastName));
+
+        //here should to  call an API for do  fetch put  of the employee
         setListEmployees((prevFormData) => {
             const newAr = prevFormData.concat(user);
             return newAr;
@@ -42,6 +45,7 @@ const Form = () => {
 
     return (
         <form id="create-employee" onSubmit={(e) => handleSubmit(e)}>
+            <div className="title">Create Employee</div>
             <ManagedInput
                 id="firstName"
                 type="text"
@@ -103,6 +107,7 @@ const Form = () => {
                     options={states}
                     title="State"
                     nameState="state"
+                    id="state"
                 />
 
                 <ManagedInput
@@ -121,6 +126,7 @@ const Form = () => {
                 options={departments}
                 title="Department"
                 nameState="department"
+                id="department"
             />
 
             <button>Save</button>

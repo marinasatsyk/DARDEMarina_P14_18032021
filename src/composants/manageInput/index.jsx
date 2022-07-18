@@ -44,7 +44,9 @@ const ManagedInput = ({
     };
     return (
         <div className="input-wrapper">
-            <label htmlFor={id}>{labelPlaceholder(id)}</label>
+            <label htmlFor={id} className={'label-create'}>
+                {labelPlaceholder(id)}
+            </label>
             <input
                 type={type ?? 'text'}
                 className="text-control"

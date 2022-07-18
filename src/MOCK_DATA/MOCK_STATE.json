@@ -1,0 +1,46 @@
+[
+    {
+      "firstName": "Eloise",
+      "lastName": "Beinisch",
+      "dateOfBirth": "1970-07-08",
+      "startDate": "2023-07-12",
+      "state": "UT",
+      "street": "Onsgard",
+      "city": "Salt Lake City",
+      "zipCode": "84140",
+      "department": "marketing"
+    },
+    {
+      "firstName": "Clementius",
+      "lastName": "Coltman",
+      "dateOfBirth": "2007-02-06",
+      "startDate": "2023-07-12",
+      "state": "MN",
+      "street": "Kipling",
+      "city": "Duluth",
+      "zipCode": "55805",
+      "department": "human resources"
+    },
+    {
+      "firstName": "Dolorita",
+      "lastName": "Ottawell",
+      "dateOfBirth": "1988-11-13",
+      "startDate": "2022-07-28",
+      "state": "NV",
+      "street": "Tony",
+      "city": "Henderson",
+      "zipCode": "89074",
+      "department": "engineering"
+    },
+    {
+      "firstName": "Roxanne",
+      "lastName": "Perkis",
+      "dateOfBirth": "1987-06-04",
+      "startDate": "2022-09-14",
+      "state": "WY",
+      "street": "Buena Vista",
+      "city": "Detroit",
+      "zipCode": "48258",
+      "department": "legal"
+    }
+  ]

@@ -2,7 +2,7 @@ import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 
 const animatedComponents = makeAnimated();
-function SingleSelect({ value, setValue, options, title, nameState }) {
+function SingleSelect({ value, setValue, options, title, nameState, id }) {
     const getValue = () => {
         return value ? options.find((c) => c.value === value) : '';
     };
@@ -19,7 +19,9 @@ function SingleSelect({ value, setValue, options, title, nameState }) {
     }
     return (
         <div className="select">
-            <h1>{title}</h1>
+            <label htmlFor={id} className={'label-create'}>
+                {title}
+            </label>
             <Select
                 classNamePrefix="custom-select"
                 // components={animatedComponents}
@@ -27,6 +29,7 @@ function SingleSelect({ value, setValue, options, title, nameState }) {
                 value={getValue()}
                 options={options}
                 isSearchable
+                id={id}
             />
         </div>
     );

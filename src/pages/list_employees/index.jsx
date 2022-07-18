@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-import Table from '../../composants/table';
-import BasicTable from './BasicTable';
+import BasicTable from '../../composants/table/BasicTable';
 
 /**
  * employees page element
@@ -9,7 +8,7 @@ import BasicTable from './BasicTable';
 const ListEmployee = () => {
     return (
         <div id="employee-div" className="container">
-            <h1 className='employee-title'>Current Employees</h1>
+            <h1 className="employee-title">Current Employees</h1>
             <BasicTable />
             <div className="home">
                 <Link to={'/'}>Home</Link>

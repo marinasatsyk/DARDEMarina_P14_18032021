@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import DataPickerElement from '../../composants/dataPicker';
 import Form from '../../composants/form_create';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 /**
  * creation employee form page element
  * @returns {React.ReactElement} page creation employee form
@@ -13,7 +15,7 @@ const Create = () => {
             </header>
 
             <Link to="/eployees">View Current Employees</Link>
-            <h3>Create Employee</h3>
+
             <Form />
         </section>
     );
