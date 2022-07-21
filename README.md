@@ -24,8 +24,7 @@ This is new version HRnet application developped with 100% react components (old
 -   Fork the [Git repository] (https://github.com/marinasatsyk/DARDEMarina_P14_18032021.git)
 -   Clone it on your computer.
 -   The `npm i` or `yarn` command will allow you to install the dependencies.
--
--   The `npm start` for backend part and `npm start` for frontend part command will allow you to run the the application. .
+-   The `npm start` command will allow you to run the the application.
 
 Runs the app in the development mode.
 Open [http://localhost:3002](http://localhost:3002) to view it in your browser.
@@ -35,6 +34,7 @@ The page will reload when you make changes.
 ### 2.3 Documentation
 
 -   Install [JSDoc] (https://www.npmjs.com/package/jsdoc)
+-   For starting: `npm run jsdoc` , then open index.html from jsdoc folder with live-server.
 
 ## 3. Functionality
 
