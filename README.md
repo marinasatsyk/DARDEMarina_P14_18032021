@@ -27,7 +27,7 @@ This is new version HRnet application developped with 100% react components (old
 -   The `npm start` command will allow you to run the the application.
 
 Runs the app in the development mode.
-Open [http://localhost:3002](http://localhost:3002) to view it in your browser.
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.
 
@@ -42,7 +42,7 @@ The page will reload when you make changes.
 
 It stores a list of employees in a global state.
 
-### 3.2. Diplayes employee profiles in the form of a table
+### 3.2. Displayes employee profiles in the form of a table
 
 -   The table is able to:
 -   Show data by 10, 25, 50, 100 items

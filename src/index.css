@@ -52,7 +52,8 @@ h1.title {
   text-align: center;
   margin-top: 10px;
 }
-.modalContainer .title-modal h1 {
+
+.modalContainer .title-modal h4 {
   font-size: 25px;
 }
 
@@ -61,6 +62,7 @@ h1.title {
   top: -15px;
   right: -15px;
 }
+
 .titleCloseBtn .wrapperBtn {
   border-radius: 50%;
   width: 30px;

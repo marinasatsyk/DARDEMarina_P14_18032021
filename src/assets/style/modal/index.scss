@@ -28,27 +28,25 @@
     display: inline-block;
     text-align: center;
     margin-top: 10px;
-    h1 {
-        font-size: 25px;
-    }
+}
+.modalContainer .title-modal h4 {
+    font-size: 25px;
 }
 
 .titleCloseBtn {
     position: absolute;
     top: -15px;
     right: -15px;
-
-    .wrapperBtn {
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        background: crimson;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 }
-
+.titleCloseBtn .wrapperBtn {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    background: crimson;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .titleCloseBtn button {
     background-color: transparent;
     border: none;

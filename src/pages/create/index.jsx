@@ -1,16 +1,11 @@
 import { Link } from 'react-router-dom';
 import Form from '../../composants/form_create';
-import { useState } from 'react';
-import Modal from '../../composants/modal';
 
 /**
  * creation employee form page element
  * @returns {React.ReactElement} page creation employee form
  */
 const Create = () => {
-    //states for open modal page
-    const [openModal, setOpenModal] = useState(false);
-
     return (
         <>
             <section id="create-div" className="container">
@@ -20,15 +15,8 @@ const Create = () => {
 
                 <Link to="/employees">View Current Employees</Link>
 
-                <Form setOpenModal={setOpenModal} />
+                <Form />
             </section>
-            {openModal && (
-                <Modal
-                    openModal={openModal}
-                    setOpenModal={setOpenModal}
-                    message="Employee Created!"
-                />
-            )}
         </>
     );
 };
