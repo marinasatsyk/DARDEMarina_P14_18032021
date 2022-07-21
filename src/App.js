@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-    BrowserRouter as Router,
-    Route,
-    Routes,
-    useLocation,
-    Navigate,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Create from './pages/create';
 import ListEmployee from './pages/list_employees';
 import Error from './composants/error';
@@ -21,14 +15,19 @@ function App() {
             <Router>
                 <div id="wrapper_main">
                     <div id="wrapper_body">
-                        <Routes>
-                            <Route path="/" element={<Create />} />
-                            <Route
-                                path="/eployees"
-                                element={<ListEmployee />}
-                            />
-                            <Route path="*" element={<Error />} />
-                        </Routes>
+                        <Switch>
+                            <Route path="/employees">
+                                <ListEmployee />
+                            </Route>
+
+                            <Route path="/">
+                                <Create />
+                            </Route>
+
+                            <Route path="*">
+                                <Error />
+                            </Route>
+                        </Switch>
                     </div>
                 </div>
             </Router>

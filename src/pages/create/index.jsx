@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
-import DataPickerElement from '../../composants/dataPicker';
 import Form from '../../composants/form_create';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import Modal from '../../composants/modal';
 
@@ -20,7 +18,7 @@ const Create = () => {
                     <h1 className="create-title title">HRnet</h1>
                 </header>
 
-                <Link to="/eployees">View Current Employees</Link>
+                <Link to="/employees">View Current Employees</Link>
 
                 <Form setOpenModal={setOpenModal} />
             </section>

@@ -6,8 +6,8 @@ import {
     useGlobalFilter,
     useSortBy,
 } from 'react-table';
-// import MOCK_DATA from '../../../MOCK_DATA/MOCK_DATA.json';
-import MOCK_DATA from '../../../MOCK_DATA/MOCK_STATE.json';
+import MOCK_DATA from '../../../MOCK_DATA/MOCK_DATA.json';
+//import MOCK_DATA from '../../../MOCK_DATA/MOCK_STATE.json';
 
 import BodyGroup from '../bodyGroup';
 import { COLUMNS } from '../columns';
