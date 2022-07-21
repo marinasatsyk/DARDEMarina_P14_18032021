@@ -21,9 +21,9 @@ const ManagedInput = ({
                 //[name]: type === 'date' ? new Date(value).toISOString() : value,
             };
         });
-        {
-            /**if there is validate field we ckeck errors */
-        }
+
+        // if there is validate field we ckeck errors
+
         validateField && setValid(validateField(event.target.value));
     }
     //for display labels

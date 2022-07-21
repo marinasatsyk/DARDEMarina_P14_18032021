@@ -20,8 +20,8 @@ const BasicTable = () => {
 
     const columns = useMemo(() => COLUMNS, []);
     //here we should to call API GET axios  list of emplyees and memorize the result
-    // const data = useMemo(() => MOCK_DATA, []);
-    const data = useMemo(() => listEmployees, []);
+    const data = useMemo(() => MOCK_DATA, []);
+    // const data = useMemo(() => listEmployees, []);
     const {
         getTableProps,
         getTableBodyProps,
