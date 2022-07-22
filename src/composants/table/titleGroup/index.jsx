@@ -1,5 +1,10 @@
+import React from 'react';
 import GlobalFilter from '../globalFilter';
-
+import PropTypes from 'prop-types';
+/**
+ * React component, creates title + global filter of table
+ * @returns {React.ReactElement} component title + filter + display mode
+ */
 const TitleGroup = ({
     pageSize,
     setPageSize,
@@ -25,5 +30,12 @@ const TitleGroup = ({
             <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
         </div>
     );
+};
+
+TitleGroup.propTypes = {
+    pageSize: PropTypes.any.isRequired,
+    setPageSize: PropTypes.func.isRequired,
+    globalFilter: PropTypes.any.isRequired,
+    setGlobalFilter: PropTypes.func.isRequired,
 };
 export default TitleGroup;

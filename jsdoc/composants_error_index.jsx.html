@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: pages/list_employees/index.jsx</title>
+    <title>JSDoc: Source: composants/error/index.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: pages/list_employees/index.jsx</h1>
+    <h1 class="page-title">Source: composants/error/index.jsx</h1>
 
     
 
@@ -27,25 +27,23 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from 'react';
-import { Link } from 'react-router-dom';
-import BasicTable from '../../composants/table/BasicTable';
+import { useParams } from 'react-router';
 
 /**
- * employees page element
- * @returns {React.ReactElement} page employees list
+ * Error page
+ * @returns {React.ReactElement} error warning
  */
-const ListEmployee = () => {
+function Error() {
+    const { error } = useParams();
     return (
-        &lt;div id="employee-div" className="container">
-            &lt;h1 className="employee-title title">Current Employees&lt;/h1>
-            &lt;BasicTable />
-            &lt;div className="home">
-                &lt;Link to={'/'}>Home&lt;/Link>
-            &lt;/div>
+        &lt;div className="error_page">
+            &lt;h2>{error ?? 404}&lt;/h2>
+            &lt;p>Oups! La page que vous avez demandé n'existe pas.&lt;/p>
         &lt;/div>
     );
-};
-export default ListEmployee;
+}
+
+export default Error;
 </code></pre>
         </article>
     </section>

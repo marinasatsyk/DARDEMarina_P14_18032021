@@ -1,20 +1,32 @@
+//@ts-check
+import React, { useEffect, useState, useContext } from 'react';
 import ManagedInput from '../manageInput';
-import { Context } from '../../constants/context';
-import { useContext, useState } from 'react';
 import { states, departments } from '../../constants/options';
 import SingleSelect from '../singleSelect';
 import { Modal, useModal } from 'darde_p14_modal_lib';
+import { unifyString, Validator } from './validators';
+import { SpinnerCircular } from 'spinners-react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    getListPending,
+    stopListPending,
+    getListSuccess,
+    getListFail,
+} from '../../constants/features/ListEmployeesSlice';
 
-const unifyString = (v) => v.trim().toLowerCase().split(' ').join('');
-
-//VALIDATEION PART
-const Validator = {
-    name: (n) => n.trim().length > 1,
-};
-
+/**
+ *Submit form for creation of employees. Send the data in the global state "listEmployees"
+ * @returns {React.ReactElement} form submit
+ */
 const Form = () => {
-    const { setListEmployees } = useContext(Context);
+    //we use the set of global state for populate after submit
+    const dispatch = useDispatch();
 
+    const { listEmployees, isLoading, error } = useSelector(
+        //@ts-ignore
+        (store) => store.list
+    );
+    //local state for one employee
     const [user, setUser] = useState({
         firstName: '',
         lastName: '',
@@ -26,25 +38,95 @@ const Form = () => {
         zipCode: '',
         department: 'sales',
     });
+
+    const [isFirstNameValidate, setIsFirstNameValidate] = useState(false);
+    const [isLastNameValidate, setIsLastNameValidate] = useState(false);
+    const [isDateOfBirthValidate, setIsDateOfBirtValidate] = useState(false);
+    const [isStartDateValidate, setIsStartDateValidate] = useState(false);
+    const [isStateValidate, setIsStateValidate] = useState(false);
+    const [isStreetValidate, setIsStreetValidate] = useState(false);
+    const [isCityValidate, setIsCityValidate] = useState(false);
+    const [isZipCodeValidate, setIsZipCodeValidate] = useState(false);
+    const [isDepartmentValidate, setIsDepartmentValidate] = useState(false);
+
+    //we use a hook of the  modal library
     const { isModalOpened: isEmployeeCreated, toggle: toggleEmployeeCreated } =
         useModal();
-    //add an eemployee in list of employees for display it in table
 
+    //add an employee in list of employees for display it in table
     const handleSubmit = (event) => {
         event.preventDefault();
-        // setIsEmailValidate(Validator.email(email));
-        // setIsPasswordIsValidate(Validator.password(password));
-        // setIsFirstNameIsValidate(Validator.name(firstName));
-        // setIsLastNameIsValidate(Validator.name(lastName));
-
-        //here you  should to  call an API for do  fetch put  of the employee
-        setListEmployees((prevFormData) => {
-            const newAr = prevFormData.concat(user);
-            return newAr;
-        });
-        //show the modal page
-        toggleEmployeeCreated();
+        // console.log('handlesubmit');
+        setIsFirstNameValidate(Validator.stringVerif(user.firstName));
+        setIsLastNameValidate(Validator.stringVerif(user.lastName));
+        setIsDateOfBirtValidate(Validator.date(user.dateOfBirth));
+        setIsStartDateValidate(Validator.date(user.startDate));
+        setIsStateValidate(Validator.stringVerif(user.state));
+        setIsStreetValidate(Validator.stringVerif(user.street));
+        setIsCityValidate(Validator.stringVerif(user.city));
+        //@ts-ignore
+        setIsZipCodeValidate(Validator.zipCode(user.zipCode));
+        setIsDepartmentValidate(Validator.stringVerif(user.department));
     };
+    useEffect(() => {
+        console.log('useEffect');
+        const addEmployee = () => {
+            if (
+                isFirstNameValidate &&
+                isLastNameValidate &&
+                isDateOfBirthValidate &&
+                isStartDateValidate &&
+                isStateValidate &&
+                isStreetValidate &&
+                isCityValidate &&
+                isZipCodeValidate &&
+                isDepartmentValidate
+            ) {
+                try {
+                    dispatch(getListPending());
+                    dispatch(getListSuccess(user));
+                    toggleEmployeeCreated();
+
+                    //restore initial states
+                    setIsFirstNameValidate(false);
+                    setIsLastNameValidate(false);
+                    setIsDateOfBirtValidate(false);
+                    setIsStartDateValidate(false);
+                    setIsStateValidate(false);
+                    setIsStreetValidate(false);
+                    setIsCityValidate(false);
+                    setIsZipCodeValidate(false);
+                    setIsDepartmentValidate(false);
+                    setUser({
+                        firstName: '',
+                        lastName: '',
+                        dateOfBirth: '',
+                        startDate: '',
+                        state: 'AL',
+                        street: '',
+                        city: '',
+                        zipCode: '',
+                        department: 'sales',
+                    });
+                } catch (err) {
+                    getListFail(err);
+                }
+            }
+        };
+        addEmployee();
+    }, [
+        isFirstNameValidate,
+        isLastNameValidate,
+        isDateOfBirthValidate,
+        isStartDateValidate,
+        isStateValidate,
+        isStreetValidate,
+        isCityValidate,
+        isZipCodeValidate,
+        isDepartmentValidate,
+        listEmployees,
+        listEmployees,
+    ]);
 
     return (
         <>
@@ -57,7 +139,7 @@ const Form = () => {
                     value={user.firstName}
                     setValue={setUser}
                     errorMessage="Make sure to enter correct First Name"
-                    validateField={Validator.name}
+                    validateField={Validator.stringVerif}
                 />
                 <ManagedInput
                     id="lastName"
@@ -66,7 +148,7 @@ const Form = () => {
                     value={user.lastName}
                     setValue={setUser}
                     errorMessage="Make sure to enter correct Last Name"
-                    validateField={Validator.name}
+                    validateField={Validator.stringVerif}
                 />
                 <ManagedInput
                     id="dateOfBirth"
@@ -74,6 +156,8 @@ const Form = () => {
                     name="dateOfBirth"
                     value={user.dateOfBirth}
                     setValue={setUser}
+                    errorMessage="Make sure to enter correct date Of Birth"
+                    validateField={Validator.date}
                 />
                 <ManagedInput
                     id="startDate"
@@ -81,6 +165,8 @@ const Form = () => {
                     name="startDate"
                     value={user.startDate}
                     setValue={setUser}
+                    errorMessage="Make sure to enter correct start Date"
+                    validateField={Validator.date}
                 />
 
                 <fieldset className="address">
@@ -91,8 +177,8 @@ const Form = () => {
                         name="street"
                         value={user.street}
                         setValue={setUser}
-                        errorMessage="Make sure to enter correct city"
-                        validateField={Validator.name}
+                        errorMessage="Make sure to enter correct address"
+                        validateField={Validator.stringVerif}
                     />
                     <ManagedInput
                         id="city"
@@ -101,7 +187,7 @@ const Form = () => {
                         value={user.city}
                         setValue={setUser}
                         errorMessage="Make sure to enter correct city"
-                        validateField={Validator.name}
+                        validateField={Validator.stringVerif}
                     />
 
                     {/**elemement for display dropdown select. uses local state user */}
@@ -120,8 +206,8 @@ const Form = () => {
                         name="zipCode"
                         value={user.zipCode}
                         setValue={setUser}
-                        errorMessage="Make sure to enter correct zipCode"
-                        validateField={Validator.name}
+                        errorMessage="Make sure to enter correct zip Code"
+                        validateField={Validator.zipCode}
                     />
                 </fieldset>
                 <SingleSelect
@@ -140,6 +226,15 @@ const Form = () => {
                 hide={toggleEmployeeCreated}
                 title="Employee Created"
             ></Modal>
+            {isLoading && (
+                <SpinnerCircular
+                    size={50}
+                    thickness={100}
+                    speed={100}
+                    color="rgba(59, 57, 172, 1)"
+                    secondaryColor="rgba(0, 0, 0, 0.44)"
+                />
+            )}
         </>
     );
 };

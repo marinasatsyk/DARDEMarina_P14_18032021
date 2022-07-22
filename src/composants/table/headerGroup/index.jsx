@@ -1,5 +1,9 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
+/**
+ *
+ * @returns {React.ReactElement} component table
+ */
 function HeaderGroup({ headerGroups }) {
     return (
         <thead>
@@ -26,4 +30,8 @@ function HeaderGroup({ headerGroups }) {
         </thead>
     );
 }
+
+HeaderGroup.propTypes = {
+    headerGroups: PropTypes.array.isRequired,
+};
 export default HeaderGroup;

@@ -1,5 +1,12 @@
-import { useState } from 'react';
+//@ts-check
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
+/**
+ *Managed Input is an element for implement into  submit component. 
+ Alows a control over input content
+ *@returns {React.ReactElement}
+ */
 const ManagedInput = ({
     id,
     type,
@@ -18,6 +25,7 @@ const ManagedInput = ({
             return {
                 ...prevValue,
                 [name]: value,
+                // [name]: type === 'text' ? unifyString(value) : value,
             };
         });
 
@@ -58,7 +66,14 @@ const ManagedInput = ({
             {/**if there is validate field we ckeck errors */}
 
             {validateField && !isValid ? (
-                <div style={{ color: 'red', fontSize: '10px' }}>
+                <div
+                    style={{
+                        color: 'red',
+                        fontSize: '15px',
+                        fontWeight: 'bold',
+                    }}
+                    className="error_message"
+                >
                     {errorMessage}
                 </div>
             ) : (
@@ -66,6 +81,16 @@ const ManagedInput = ({
             )}
         </div>
     );
+};
+
+ManagedInput.propTypes = {
+    id: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    value: PropTypes.string.isRequired,
+    setValue: PropTypes.func.isRequired,
+    errorMessage: PropTypes.string,
+    validateField: PropTypes.func,
 };
 
 export default ManagedInput;

@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router';
 
 /**
- * Error page
+ * Error page in case of an  incorrect path
  * @returns {React.ReactElement} error warning
  */
 function Error() {

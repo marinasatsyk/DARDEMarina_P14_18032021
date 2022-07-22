@@ -1,5 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
+/**
+ *This is component witch render all body content  of table into a cells
+ * *@returns {React.ReactElement} table's body content
+ */
 const BodyGroup = ({ getTableBodyProps, page, prepareRow }) => {
     return (
         <tbody {...getTableBodyProps()}>
@@ -19,5 +24,10 @@ const BodyGroup = ({ getTableBodyProps, page, prepareRow }) => {
             })}
         </tbody>
     );
+};
+BodyGroup.propTypes = {
+    getTableBodyProps: PropTypes.func.isRequired,
+    page: PropTypes.any.isRequired,
+    prepareRow: PropTypes.func.isRequired,
 };
 export default BodyGroup;

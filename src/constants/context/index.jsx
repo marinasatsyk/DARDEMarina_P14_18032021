@@ -10,12 +10,18 @@ export const Context = createContext();
  */
 const DataProvider = ({ children }) => {
     const [listEmployees, setListEmployees] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState('');
 
     return (
         <Context.Provider
             value={{
                 listEmployees,
                 setListEmployees,
+                isLoading,
+                setIsLoading,
+                error,
+                setError,
             }}
         >
             {children}

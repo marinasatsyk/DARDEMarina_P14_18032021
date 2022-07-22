@@ -1,3 +1,5 @@
+import React from 'react';
+
 const FooterGroup = ({
     dataLength,
     pageIndex,
@@ -11,7 +13,7 @@ const FooterGroup = ({
     gotoPage,
 }) => {
     /**
-     * block pagination counter
+     *component contains  block pagination  & counter of pages
      */
     const isActive = (item) => {
         return item === pageIndex + 1 ? true : false;

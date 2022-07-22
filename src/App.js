@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Create from './pages/create';
 import ListEmployee from './pages/list_employees';
 import Error from './composants/error';
-import DataProvider from './constants/context';
+// import DataProvider from './constants/context';
 
 /**
  * App is function router
@@ -11,27 +11,24 @@ import DataProvider from './constants/context';
  */
 function App() {
     return (
-        <DataProvider>
-            <Router>
-                <div id="wrapper_main">
-                    <div id="wrapper_body">
-                        <Switch>
-                            <Route path="/employees">
-                                <ListEmployee />
-                            </Route>
+        <Router>
+            <div id="wrapper_main">
+                <div id="wrapper_body">
+                    <Switch>
+                        <Route exact path="/employees">
+                            <ListEmployee />
+                        </Route>
 
-                            <Route path="/">
-                                <Create />
-                            </Route>
-
-                            <Route path="*">
-                                <Error />
-                            </Route>
-                        </Switch>
-                    </div>
+                        <Route exact path="/">
+                            <Create />
+                        </Route>
+                        <Route path="*">
+                            <Error />
+                        </Route>
+                    </Switch>
                 </div>
-            </Router>
-        </DataProvider>
+            </div>
+        </Router>
     );
 }
 
