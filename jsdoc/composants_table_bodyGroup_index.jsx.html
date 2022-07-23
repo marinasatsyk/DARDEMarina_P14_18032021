@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: pages/list_employees/index.jsx</title>
+    <title>JSDoc: Source: composants/table/bodyGroup/index.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: pages/list_employees/index.jsx</h1>
+    <h1 class="page-title">Source: composants/table/bodyGroup/index.jsx</h1>
 
     
 
@@ -27,25 +27,38 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from 'react';
-import { Link } from 'react-router-dom';
-import BasicTable from '../../composants/table/BasicTable';
+import PropTypes from 'prop-types';
 
 /**
- * employees page component
- * @returns {React.ReactElement} table contains the list of all employees
+ *This is component witch render all body content  of table into a cells
+ * *@returns {React.ReactElement} table's body content
  */
-const ListEmployee = () => {
+const BodyGroup = ({ getTableBodyProps, page, prepareRow }) => {
     return (
-        &lt;div id="employee-div" className="container">
-            &lt;h1 className="employee-title title">Current Employees&lt;/h1>
-            &lt;BasicTable />
-            &lt;div className="home">
-                &lt;Link to={'/'}>Home&lt;/Link>
-            &lt;/div>
-        &lt;/div>
+        &lt;tbody {...getTableBodyProps()}>
+            {page.map((row) => {
+                prepareRow(row);
+                return (
+                    &lt;tr {...row.getRowProps()}>
+                        {row.cells.map((cell) => {
+                            return (
+                                &lt;td {...cell.getCellProps()}>
+                                    {cell.render('Cell')}
+                                &lt;/td>
+                            );
+                        })}
+                    &lt;/tr>
+                );
+            })}
+        &lt;/tbody>
     );
 };
-export default ListEmployee;
+BodyGroup.propTypes = {
+    getTableBodyProps: PropTypes.func.isRequired,
+    page: PropTypes.array.isRequired,
+    prepareRow: PropTypes.func.isRequired,
+};
+export default BodyGroup;
 </code></pre>
         </article>
     </section>

@@ -30,7 +30,7 @@ const ManagedInput = ({
         });
 
         // if there is validate field we ckeck errors
-
+        console.log(event.target.value);
         validateField && setValid(validateField(event.target.value));
     }
     //for display labels
@@ -89,8 +89,8 @@ ManagedInput.propTypes = {
     name: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     setValue: PropTypes.func.isRequired,
-    errorMessage: PropTypes.string,
-    validateField: PropTypes.func,
+    errorMessage: PropTypes.string.isRequired,
+    validateField: PropTypes.func.isRequired,
 };
 
 export default ManagedInput;

@@ -201,6 +201,11 @@ tfoot td {
 .table-footer .top-group {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 15px;
+}
+.table-footer .right-side {
+  display: flex;
+  gap: 10px;
 }
 
 .home {

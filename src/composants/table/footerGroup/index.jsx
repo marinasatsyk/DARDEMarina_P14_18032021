@@ -1,5 +1,11 @@
+//@ts-check
 import React from 'react';
+import PropTypes from 'prop-types';
 
+/**
+ *Footer component of the table
+ * @returns {React.ReactElement} component combines the elements of the lower part of the table
+ */
 const FooterGroup = ({
     dataLength,
     pageIndex,
@@ -70,4 +76,18 @@ const FooterGroup = ({
         </>
     );
 };
+
+FooterGroup.propTypes = {
+    dataLength: PropTypes.number.isRequired,
+    pageIndex: PropTypes.number.isRequired,
+    pageSize: PropTypes.number.isRequired,
+    previousPage: PropTypes.func.isRequired,
+    canPreviousPage: PropTypes.bool.isRequired,
+    pageOptions: PropTypes.array.isRequired,
+    canNextPage: PropTypes.bool.isRequired,
+    nextPage: PropTypes.func.isRequired,
+    pageCount: PropTypes.number.isRequired,
+    gotoPage: PropTypes.func.isRequired,
+};
+
 export default FooterGroup;

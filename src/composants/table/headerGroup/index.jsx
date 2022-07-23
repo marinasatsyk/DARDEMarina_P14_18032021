@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 /**
- *
- * @returns {React.ReactElement} component table
+ *HeaderGroup component table
+ * @returns {React.ReactElement} component header of table
  */
 function HeaderGroup({ headerGroups }) {
     return (

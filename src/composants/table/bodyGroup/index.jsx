@@ -27,7 +27,7 @@ const BodyGroup = ({ getTableBodyProps, page, prepareRow }) => {
 };
 BodyGroup.propTypes = {
     getTableBodyProps: PropTypes.func.isRequired,
-    page: PropTypes.any.isRequired,
+    page: PropTypes.array.isRequired,
     prepareRow: PropTypes.func.isRequired,
 };
 export default BodyGroup;

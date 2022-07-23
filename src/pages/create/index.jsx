@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import Form from '../../composants/form_create';
 
 /**
- * creation employee form page element
- * @returns {React.ReactElement} page creation employee form
+ * Create is page contains the form for employee creation
+ * @returns {React.ReactElement} page contains the form for employee creation
  */
 const Create = () => {
     return (

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: pages/list_employees/index.jsx</title>
+    <title>JSDoc: Source: composants/table/titleGroup/index.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: pages/list_employees/index.jsx</h1>
+    <h1 class="page-title">Source: composants/table/titleGroup/index.jsx</h1>
 
     
 
@@ -27,25 +27,46 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from 'react';
-import { Link } from 'react-router-dom';
-import BasicTable from '../../composants/table/BasicTable';
-
+import GlobalFilter from '../globalFilter';
+import PropTypes from 'prop-types';
 /**
- * employees page component
- * @returns {React.ReactElement} table contains the list of all employees
+ * React component, creates title + global filter of table
+ * @returns {React.ReactElement} component title + filter + display mode
  */
-const ListEmployee = () => {
+const TitleGroup = ({
+    pageSize,
+    setPageSize,
+    globalFilter,
+    setGlobalFilter,
+}) => {
     return (
-        &lt;div id="employee-div" className="container">
-            &lt;h1 className="employee-title title">Current Employees&lt;/h1>
-            &lt;BasicTable />
-            &lt;div className="home">
-                &lt;Link to={'/'}>Home&lt;/Link>
+        &lt;div className="header-table">
+            &lt;div className="select_wrapper">
+                Show{' '}
+                &lt;select
+                    value={pageSize}
+                    onChange={(e) => setPageSize(Number(e.target.value))}
+                >
+                    {[10, 25, 50, 100].map((pageSize) => (
+                        &lt;option key={pageSize} value={pageSize}>
+                            {pageSize}
+                        &lt;/option>
+                    ))}
+                &lt;/select>
+                entries
             &lt;/div>
+            &lt;GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
         &lt;/div>
     );
 };
-export default ListEmployee;
+
+TitleGroup.propTypes = {
+    pageSize: PropTypes.number.isRequired,
+    setPageSize: PropTypes.func.isRequired,
+    globalFilter: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+    setGlobalFilter: PropTypes.func.isRequired,
+};
+export default TitleGroup;
 </code></pre>
         </article>
     </section>

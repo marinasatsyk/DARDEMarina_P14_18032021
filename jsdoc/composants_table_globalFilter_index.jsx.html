@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: pages/list_employees/index.jsx</title>
+    <title>JSDoc: Source: composants/table/globalFilter/index.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: pages/list_employees/index.jsx</h1>
+    <h1 class="page-title">Source: composants/table/globalFilter/index.jsx</h1>
 
     
 
@@ -26,26 +26,34 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react';
-import { Link } from 'react-router-dom';
-import BasicTable from '../../composants/table/BasicTable';
+            <pre class="prettyprint source linenums"><code>import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 /**
- * employees page component
- * @returns {React.ReactElement} table contains the list of all employees
+ * Functionality of table for do global filter
+ * @returns {React.ReactElement} component global filter
  */
-const ListEmployee = () => {
+const GlobalFilter = ({ filter, setFilter }) => {
+    const [value, setValue] = useState(filter);
+
     return (
-        &lt;div id="employee-div" className="container">
-            &lt;h1 className="employee-title title">Current Employees&lt;/h1>
-            &lt;BasicTable />
-            &lt;div className="home">
-                &lt;Link to={'/'}>Home&lt;/Link>
-            &lt;/div>
-        &lt;/div>
+        &lt;span>
+            Search:{' '}
+            &lt;input
+                value={value || ''}
+                onChange={(e) => {
+                    setValue(e.target.value);
+                    setFilter(e.target.value || undefined);
+                }}
+            />
+        &lt;/span>
     );
 };
-export default ListEmployee;
+GlobalFilter.propTypes = {
+    filter: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+    setFilter: PropTypes.func.isRequired,
+};
+export default GlobalFilter;
 </code></pre>
         </article>
     </section>

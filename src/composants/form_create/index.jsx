@@ -126,6 +126,7 @@ const Form = () => {
         isDepartmentValidate,
         listEmployees,
         listEmployees,
+        isLoading,
     ]);
 
     return (

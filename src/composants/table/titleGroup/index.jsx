@@ -33,9 +33,9 @@ const TitleGroup = ({
 };
 
 TitleGroup.propTypes = {
-    pageSize: PropTypes.any.isRequired,
+    pageSize: PropTypes.number.isRequired,
     setPageSize: PropTypes.func.isRequired,
-    globalFilter: PropTypes.any.isRequired,
+    globalFilter: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
     setGlobalFilter: PropTypes.func.isRequired,
 };
 export default TitleGroup;

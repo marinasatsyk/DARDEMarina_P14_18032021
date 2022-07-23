@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: pages/list_employees/index.jsx</title>
+    <title>JSDoc: Source: composants/form_create/validators/index.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: pages/list_employees/index.jsx</h1>
+    <h1 class="page-title">Source: composants/form_create/validators/index.jsx</h1>
 
     
 
@@ -26,26 +26,43 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react';
-import { Link } from 'react-router-dom';
-import BasicTable from '../../composants/table/BasicTable';
-
-/**
- * employees page component
- * @returns {React.ReactElement} table contains the list of all employees
+            <pre class="prettyprint source linenums"><code>/**
+ * * @param {string} v string expression for unify the format
+ * @returns {string}
  */
-const ListEmployee = () => {
-    return (
-        &lt;div id="employee-div" className="container">
-            &lt;h1 className="employee-title title">Current Employees&lt;/h1>
-            &lt;BasicTable />
-            &lt;div className="home">
-                &lt;Link to={'/'}>Home&lt;/Link>
-            &lt;/div>
-        &lt;/div>
-    );
+
+export const unifyString = (v) => {
+    return v.trim().toLowerCase();
 };
-export default ListEmployee;
+
+//VALIDATION PART
+/**
+ * @param {string} v_stringVerif string expression for firstName, lastName, city, state, street
+ * @param {date} v_date string expression for date of birth, start day
+ * @param {number} v_zipCode number expression for zip code
+ * @return {boolean}
+ */
+
+export const Validator = {
+    stringVerif: (v_stringVerif) => {
+        let regEx = /^[a-zA-Z ]*$/gm;
+        return regEx.test(v_stringVerif);
+    },
+    date: (v_date) => {
+        let regEx = /^\d{4}-\d{2}-\d{2}$/;
+        if (!v_date.match(regEx)) return false; // Invalid format
+        let d = new Date(v_date);
+        let dNum = d.getTime();
+        if (!dNum &amp;&amp; dNum !== 0) return false; // NaN value, Invalid date
+        return d.toISOString().slice(0, 10) === v_date;
+    },
+
+    zipCode: (v_zipCode) => {
+        let regEx = /^\d{5}(?:[-\s]\d{4})?$/;
+        if (!v_zipCode.match(regEx)) return false; // Invalid format
+        if (v_zipCode.match(regEx)) return true;
+    },
+};
 </code></pre>
         </article>
     </section>

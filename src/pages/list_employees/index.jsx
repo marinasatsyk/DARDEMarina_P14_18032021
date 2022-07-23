@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import BasicTable from '../../composants/table/BasicTable';
 
 /**
- * employees page element
- * @returns {React.ReactElement} page employees list
+ * employees page component
+ * @returns {React.ReactElement} table contains the list of all employees
  */
 const ListEmployee = () => {
     return (
