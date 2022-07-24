@@ -34,4 +34,49 @@ export const Validator = {
         if (!v_zipCode.match(regEx)) return false; // Invalid format
         if (v_zipCode.match(regEx)) return true;
     },
+    validDateBirth: (d) => {
+        //date submited into the form
+        const date_to_valide = new Date(convertDate(d));
+
+        //today date
+        const start = new Date();
+
+        //date of majority. for this exemple is 18
+        //retun the date of previous day => day +1
+        const majorDate = new Date(
+            convertDate(
+                new Date(
+                    `${start.getFullYear() - 18}-${start.getMonth() + 1}-${
+                        start.getDate() + 1
+                    }`
+                )
+            )
+        );
+        //comparing submited date of birh and date of majority
+        return date_to_valide - majorDate <= 0 ? true : false;
+    },
+    validDateStart: (d) => {
+        const date_to_valide = new Date(convertDate(d));
+        // console.log('date_to_valide validDateStart');
+        // console.log(date_to_valide);
+        const start = new Date();
+        // console.log('validDateStart START');
+        // console.log(start);
+        const startDate = new Date(
+            convertDate(
+                new Date(
+                    `${start.getFullYear()}-${start.getMonth() + 1}-${
+                        start.getDate() + 1
+                    }`
+                )
+            )
+        );
+        // console.log('startDate' + startDate);
+        return startDate - date_to_valide <= 0 ? true : false;
+    },
 };
+//func for do not take into consideration the time
+function convertDate(d) {
+    const D = new Date(d).toISOString().slice(0, 10);
+    return D;
+}

@@ -59,8 +59,10 @@ const Form = () => {
         // console.log('handlesubmit');
         setIsFirstNameValidate(Validator.stringVerif(user.firstName));
         setIsLastNameValidate(Validator.stringVerif(user.lastName));
-        setIsDateOfBirtValidate(Validator.date(user.dateOfBirth));
-        setIsStartDateValidate(Validator.date(user.startDate));
+        setIsDateOfBirtValidate(Validator.validDateBirth(user.dateOfBirth));
+        console.log(Validator.validDateBirth(user.dateOfBirth));
+        setIsStartDateValidate(Validator.validDateStart(user.startDate));
+        console.log(Validator.validDateStart(user.startDate));
         setIsStateValidate(Validator.stringVerif(user.state));
         setIsStreetValidate(Validator.stringVerif(user.street));
         setIsCityValidate(Validator.stringVerif(user.city));
@@ -157,8 +159,8 @@ const Form = () => {
                     name="dateOfBirth"
                     value={user.dateOfBirth}
                     setValue={setUser}
-                    errorMessage="Make sure to enter correct date Of Birth"
-                    validateField={Validator.date}
+                    errorMessage="Make sure to employee is of legal age >= 18"
+                    validateField={Validator.validDateBirth}
                 />
                 <ManagedInput
                     id="startDate"
@@ -166,8 +168,8 @@ const Form = () => {
                     name="startDate"
                     value={user.startDate}
                     setValue={setUser}
-                    errorMessage="Make sure to enter correct start Date"
-                    validateField={Validator.date}
+                    errorMessage="Make sure to enter correct start date starting today"
+                    validateField={Validator.validDateStart}
                 />
 
                 <fieldset className="address">
