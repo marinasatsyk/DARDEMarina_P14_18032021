@@ -12,7 +12,9 @@ const ListEmployee = () => {
             <h1 className="employee-title title">Current Employees</h1>
             <BasicTable />
             <div className="home">
-                <Link to={'/'}>Home</Link>
+                <Link to={'/'} className="link">
+                    Home
+                </Link>
             </div>
         </div>
     );

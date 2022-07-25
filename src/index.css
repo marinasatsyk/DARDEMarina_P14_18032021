@@ -89,6 +89,28 @@ h1.title {
   padding: 0 2rem;
 }
 
+.link {
+  display: block;
+  margin-bottom: 10px;
+  color: #181a4d;
+  text-decoration: none;
+  border-radius: 3px 3px 0 0;
+}
+.link:hover {
+  animation: scaleIn 0.4s ease-in-out forwards;
+}
+
+@keyframes scaleIn {
+  0% {
+    background: transparent;
+    color: #181a4d;
+  }
+  100% {
+    background: #ebebf9;
+    font-weight: bold;
+    font-size: 20px;
+  }
+}
 #create-employee {
   border-radius: 5px;
   background: #181a4d;
@@ -117,9 +139,12 @@ h1.title {
   border-radius: 5px;
   background-color: rgba(153, 154, 165, 0.6) !important;
   cursor: pointer;
+  transform: scale(1);
+  transition: transform 400ms;
 }
 #create-employee button:hover {
   background-color: #178f4d !important;
+  transform: scale(1.1);
 }
 
 .input-wrapper input {

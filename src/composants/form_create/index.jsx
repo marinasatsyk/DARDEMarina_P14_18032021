@@ -60,9 +60,7 @@ const Form = () => {
         setIsFirstNameValidate(Validator.stringVerif(user.firstName));
         setIsLastNameValidate(Validator.stringVerif(user.lastName));
         setIsDateOfBirtValidate(Validator.validDateBirth(user.dateOfBirth));
-        console.log(Validator.validDateBirth(user.dateOfBirth));
         setIsStartDateValidate(Validator.validDateStart(user.startDate));
-        console.log(Validator.validDateStart(user.startDate));
         setIsStateValidate(Validator.stringVerif(user.state));
         setIsStreetValidate(Validator.stringVerif(user.street));
         setIsCityValidate(Validator.stringVerif(user.city));

@@ -14,7 +14,9 @@ const Create = () => {
                     <h1 className="create-title title">HRnet</h1>
                 </header>
 
-                <Link to="/employees">View Current Employees</Link>
+                <Link to="/employees" className="link">
+                    View Current Employees
+                </Link>
 
                 <Form />
             </section>

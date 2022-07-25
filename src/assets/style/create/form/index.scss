@@ -25,11 +25,24 @@
         border-radius: 5px;
         background-color: rgba(#999aa5, 0.6) !important;
         cursor: pointer;
+        transform: scale(1);
+        transition: transform 400ms;
         &:hover {
             background-color: darken(#5be499, 30%) !important;
+            // animation: btnColor 0.4s ease-in-out !important;
+            transform: scale(1.1);
         }
     }
 }
+
+// @keyframes btnColor {
+//     0% {
+//         background-color: rgba(#999aa5, 0.6) !important;
+//     }
+//     100% {
+//         background: darken(#5be499, 30%) !important;
+//     }
+// }
 
 .input-wrapper {
     input {
