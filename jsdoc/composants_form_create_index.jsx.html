@@ -27,17 +27,16 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>//@ts-check
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import ManagedInput from '../manageInput';
 import { states, departments } from '../../constants/options';
 import SingleSelect from '../singleSelect';
 import { Modal, useModal } from 'darde_p14_modal_lib';
-import { unifyString, Validator } from './validators';
+import { Validator } from './validators';
 import { SpinnerCircular } from 'spinners-react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     getListPending,
-    stopListPending,
     getListSuccess,
     getListFail,
 } from '../../constants/features/ListEmployeesSlice';
@@ -87,8 +86,8 @@ const Form = () => {
         // console.log('handlesubmit');
         setIsFirstNameValidate(Validator.stringVerif(user.firstName));
         setIsLastNameValidate(Validator.stringVerif(user.lastName));
-        setIsDateOfBirtValidate(Validator.date(user.dateOfBirth));
-        setIsStartDateValidate(Validator.date(user.startDate));
+        setIsDateOfBirtValidate(Validator.validDateBirth(user.dateOfBirth));
+        setIsStartDateValidate(Validator.validDateStart(user.startDate));
         setIsStateValidate(Validator.stringVerif(user.state));
         setIsStreetValidate(Validator.stringVerif(user.street));
         setIsCityValidate(Validator.stringVerif(user.city));
@@ -152,7 +151,15 @@ const Form = () => {
         isCityValidate,
         isZipCodeValidate,
         isDepartmentValidate,
-        listEmployees,
+        setIsFirstNameValidate,
+        setIsLastNameValidate,
+        setIsDateOfBirtValidate,
+        setIsStartDateValidate,
+        setIsStateValidate,
+        setIsStreetValidate,
+        setIsCityValidate,
+        setIsZipCodeValidate,
+        setIsDepartmentValidate,
         listEmployees,
         isLoading,
     ]);
@@ -185,8 +192,8 @@ const Form = () => {
                     name="dateOfBirth"
                     value={user.dateOfBirth}
                     setValue={setUser}
-                    errorMessage="Make sure to enter correct date Of Birth"
-                    validateField={Validator.date}
+                    errorMessage="Make sure to employee is of legal age >= 18"
+                    validateField={Validator.validDateBirth}
                 />
                 &lt;ManagedInput
                     id="startDate"
@@ -194,8 +201,8 @@ const Form = () => {
                     name="startDate"
                     value={user.startDate}
                     setValue={setUser}
-                    errorMessage="Make sure to enter correct start Date"
-                    validateField={Validator.date}
+                    errorMessage="Make sure to enter correct start date starting today"
+                    validateField={Validator.validDateStart}
                 />
 
                 &lt;fieldset className="address">
@@ -279,13 +286,13 @@ export default Form;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#BasicTable">BasicTable</a></li><li><a href="global.html#BodyGroup">BodyGroup</a></li><li><a href="global.html#Create">Create</a></li><li><a href="global.html#DataProvider">DataProvider</a></li><li><a href="global.html#departments">departments</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#FooterGroup">FooterGroup</a></li><li><a href="global.html#Form">Form</a></li><li><a href="global.html#GlobalFilter">GlobalFilter</a></li><li><a href="global.html#HeaderGroup">HeaderGroup</a></li><li><a href="global.html#ListEmployee">ListEmployee</a></li><li><a href="global.html#ManagedInput">ManagedInput</a></li><li><a href="global.html#SingleSelect">SingleSelect</a></li><li><a href="global.html#states">states</a></li><li><a href="global.html#TitleGroup">TitleGroup</a></li><li><a href="global.html#unifyString">unifyString</a></li><li><a href="global.html#Validator">Validator</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#BasicTable">BasicTable</a></li><li><a href="global.html#BodyGroup">BodyGroup</a></li><li><a href="global.html#Create">Create</a></li><li><a href="global.html#DataProvider">DataProvider</a></li><li><a href="global.html#departments">departments</a></li><li><a href="global.html#Error">Error</a></li><li><a href="global.html#FooterGroup">FooterGroup</a></li><li><a href="global.html#Form">Form</a></li><li><a href="global.html#GlobalFilter">GlobalFilter</a></li><li><a href="global.html#HeaderGroup">HeaderGroup</a></li><li><a href="global.html#ListEmployee">ListEmployee</a></li><li><a href="global.html#ManagedInput">ManagedInput</a></li><li><a href="global.html#SingleSelect">SingleSelect</a></li><li><a href="global.html#states">states</a></li><li><a href="global.html#store">store</a></li><li><a href="global.html#TitleGroup">TitleGroup</a></li><li><a href="global.html#unifyString">unifyString</a></li><li><a href="global.html#Validator">Validator</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Sat Jul 23 2022 19:20:41 GMT+0200 (heure d’été d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Tue Jul 26 2022 18:13:10 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

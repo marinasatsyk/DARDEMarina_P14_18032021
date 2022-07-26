@@ -33,6 +33,7 @@ const FooterGroup = ({
         }
         return count.map((item) => (
             <div
+                key={item}
                 className={isActive(item) ? 'active numbOfPage' : 'numbOfPage'}
                 onClick={() => gotoPage(item - 1)}
             >
@@ -45,7 +46,8 @@ const FooterGroup = ({
             <div className="table-footer">
                 <div className="top-group">
                     <div className="count_entries">
-                        Showing {(pageIndex + 1) * pageSize - pageSize + 1} to
+                        Showing {(pageIndex + 1) * pageSize - pageSize + 1}{' '}
+                        to&nbsp;
                         {(pageIndex + 1) * pageSize} from {dataLength} entries
                     </div>{' '}
                     <div className="right-side">

@@ -31,6 +31,10 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.
 
+#### 2.2.1
+
+To get more performance run this application in mode build. First `npm run build`, then `serve -s build`.
+
 ### 2.3 Documentation
 
 -   Install [JSDoc] (https://www.npmjs.com/package/jsdoc)

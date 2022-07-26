@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: App.js</title>
+    <title>JSDoc: Source: store/index.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: App.js</h1>
+    <h1 class="page-title">Source: store/index.jsx</h1>
 
     
 
@@ -26,41 +26,16 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Create from './pages/create';
-import ListEmployee from './pages/list_employees';
-import Error from './composants/error';
-
+            <pre class="prettyprint source linenums"><code>import { configureStore } from '@reduxjs/toolkit';
+import GetListReducer from '../constants/features/ListEmployeesSlice';
 /**
- * App is function router
- * @returns {React.ReactElement}
+ * store of the application
  */
-function App() {
-    document.title = 'HRnet';
-    return (
-        &lt;Router>
-            &lt;div id="wrapper_main">
-                &lt;div id="wrapper_body">
-                    &lt;Switch>
-                        &lt;Route exact path="/employees">
-                            &lt;ListEmployee />
-                        &lt;/Route>
-
-                        &lt;Route exact path="/">
-                            &lt;Create />
-                        &lt;/Route>
-                        &lt;Route path="*">
-                            &lt;Error />
-                        &lt;/Route>
-                    &lt;/Switch>
-                &lt;/div>
-            &lt;/div>
-        &lt;/Router>
-    );
-}
-
-export default App;
+export const store = configureStore({
+    reducer: {
+        list: GetListReducer,
+    },
+});
 </code></pre>
         </article>
     </section>

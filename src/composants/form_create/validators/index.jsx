@@ -6,6 +6,11 @@
 export const unifyString = (v) => {
     return v.trim().toLowerCase();
 };
+//func for do not take into consideration the time
+export function convertDate(d) {
+    const D = new Date(d).toISOString().slice(0, 10);
+    return D;
+}
 
 //VALIDATION PART
 /**
@@ -76,8 +81,3 @@ export const Validator = {
         return startDate - date_to_valide <= 0 ? true : false;
     },
 };
-//func for do not take into consideration the time
-function convertDate(d) {
-    const D = new Date(d).toISOString().slice(0, 10);
-    return D;
-}

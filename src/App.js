@@ -3,13 +3,13 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Create from './pages/create';
 import ListEmployee from './pages/list_employees';
 import Error from './composants/error';
-// import DataProvider from './constants/context';
 
 /**
  * App is function router
  * @returns {React.ReactElement}
  */
 function App() {
+    document.title = 'HRnet';
     return (
         <Router>
             <div id="wrapper_main">

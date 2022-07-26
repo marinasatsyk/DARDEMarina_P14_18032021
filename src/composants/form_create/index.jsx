@@ -1,15 +1,14 @@
 //@ts-check
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import ManagedInput from '../manageInput';
 import { states, departments } from '../../constants/options';
 import SingleSelect from '../singleSelect';
 import { Modal, useModal } from 'darde_p14_modal_lib';
-import { unifyString, Validator } from './validators';
+import { Validator } from './validators';
 import { SpinnerCircular } from 'spinners-react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     getListPending,
-    stopListPending,
     getListSuccess,
     getListFail,
 } from '../../constants/features/ListEmployeesSlice';
@@ -124,7 +123,15 @@ const Form = () => {
         isCityValidate,
         isZipCodeValidate,
         isDepartmentValidate,
-        listEmployees,
+        setIsFirstNameValidate,
+        setIsLastNameValidate,
+        setIsDateOfBirtValidate,
+        setIsStartDateValidate,
+        setIsStateValidate,
+        setIsStreetValidate,
+        setIsCityValidate,
+        setIsZipCodeValidate,
+        setIsDepartmentValidate,
         listEmployees,
         isLoading,
     ]);
