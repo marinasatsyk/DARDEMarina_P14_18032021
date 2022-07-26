@@ -8,11 +8,10 @@ import {
     useGlobalFilter,
     useSortBy,
 } from 'react-table';
-//mocked datas for test it in the table 1000 items
+//mocked datas for test it in the table with 1000 items
 import MOCK_DATA from '../../../MOCK_DATA/MOCK_DATA.json';
 //mocked datas for test it in the table 4 items, state format
 //import MOCK_DATA from '../../../MOCK_DATA/MOCK_STATE.json';
-// import MOCK_DATA2 from '../../../MOCK_DATA/MOCK_STATE2.json'
 
 import BodyGroup from '../bodyGroup';
 import { COLUMNS } from '../columns';
@@ -33,9 +32,10 @@ const BasicTable = () => {
 
     const columns = useMemo(() => COLUMNS, []);
     //here we should to call API GET axios  list of emplyees and memorize the result
-    //UseMemo allow do not reload the data only in case of any changes
-    const data = useMemo(() => MOCK_DATA, []);
-    //const data = useMemo(() => listEmployees, []);
+
+    // UseMemo allow do not reload the data only in case of any changes
+    //const data = useMemo(() => MOCK_DATA, []);
+    const data = useMemo(() => listEmployees, []);
 
     //we destructure the table-react components for use it
     const {

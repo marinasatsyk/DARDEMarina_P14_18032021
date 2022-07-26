@@ -15,8 +15,8 @@ export function convertDate(d) {
 //VALIDATION PART
 /**
  * @param {string} v_stringVerif string expression for firstName, lastName, city, state, street
- * @param {date} d_Birth string expression for date of birth
- * @param {date} d_Start string expression for date of  start day
+ * @param {Object} d_Birth string expression for date of birth
+ * @param {Object} d_Start string expression for date of  start day
  * @param {number} v_zipCode number expression for zip code
  * @return {boolean}
  */
