@@ -34,8 +34,8 @@ const BasicTable = () => {
     //here we should to call API GET axios  list of emplyees and memorize the result
 
     // UseMemo allow do not reload the data only in case of any changes
-    //const data = useMemo(() => MOCK_DATA, []);
-    const data = useMemo(() => listEmployees, []);
+    const data = useMemo(() => MOCK_DATA, []);
+    // const data = useMemo(() => listEmployees, []);
 
     //we destructure the table-react components for use it
     const {
