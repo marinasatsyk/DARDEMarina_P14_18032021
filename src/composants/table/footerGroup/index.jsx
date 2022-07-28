@@ -1,6 +1,7 @@
 //@ts-check
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ShowPage } from './pagination';
 
 /**
  *Footer component of the table
@@ -28,58 +29,6 @@ const FooterGroup = ({
         return item === pageIndex + 1 ? true : false;
     };
 
-    //for show first, last, active pages
-    const ShowP = (pageIndex) => {
-        const count = [];
-        for (let i = 1; i <= pageCount; i++) {
-            count.push(i);
-        }
-        const ar = [];
-
-        if (count.length <= 5) {
-            count.map((item) => ar.push(item));
-        } else if (
-            count.length > 5 &&
-            pageIndex > 1 &&
-            pageIndex < count[count.length - 3]
-        ) {
-            console.log('first');
-            console.log(pageIndex);
-            ar.push(
-                count[0],
-                pageIndex,
-                pageIndex + 1,
-                pageIndex + 2,
-                count[count.length - 1]
-            );
-        } else if (count.length > 5 && pageIndex <= 1) {
-            console.log('sec');
-            ar.push(count[0], 2, 3, 4, count[count.length - 1]);
-        } else if (count.length > 5 && pageIndex >= count[count.length - 3]) {
-            console.log('fird');
-
-            ar.push(
-                count[0],
-                count[count.length - 4],
-                count[count.length - 3],
-                count[count.length - 2],
-                count[count.length - 1]
-            );
-        }
-
-        return ar.map((item) => (
-            <div
-                key={item}
-                className={isActive(item) ? 'active numbOfPage' : 'numbOfPage'}
-                onClick={() => gotoPage(item - 1)}
-            >
-                {item}
-            </div>
-        ));
-    };
-
-    // console.log(ShowP(pageIndex));
-
     return (
         <>
             <div className="table-footer">
@@ -97,7 +46,16 @@ const FooterGroup = ({
                         >
                             Previous
                         </button>
-                        <div className="page-counter">{ShowP(pageIndex)}</div>
+                        <div className="page-counter">
+                            {
+                                <ShowPage
+                                    pageIndex={pageIndex}
+                                    pageCount={pageCount}
+                                    isActive={isActive}
+                                    gotoPage={gotoPage}
+                                />
+                            }
+                        </div>
 
                         <button
                             className="btn next"
@@ -108,7 +66,6 @@ const FooterGroup = ({
                         </button>
                     </div>
                 </div>
-                {/* <div className="page-counter">{ShowP(pageIndex)}</div> */}
                 <div className="total-cont-pages">
                     Page{' '}
                     <strong>

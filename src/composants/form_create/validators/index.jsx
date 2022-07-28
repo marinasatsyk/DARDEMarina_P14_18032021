@@ -26,14 +26,6 @@ export const Validator = {
         let regEx = /^[a-zA-Z ]*$/gm;
         return regEx.test(v_stringVerif);
     },
-    // date: (v_date) => {
-    //     let regEx = /^\d{4}-\d{2}-\d{2}$/;
-    //     if (!v_date.match(regEx)) return false; // Invalid format
-    //     let d = new Date(v_date);
-    //     let dNum = d.getTime();
-    //     if (!dNum && dNum !== 0) return false; // NaN value, Invalid date
-    //     return d.toISOString().slice(0, 10) === v_date;
-    // },
 
     zipCode: (v_zipCode) => {
         let regEx = /^\d{5}(?:[-\s]\d{4})?$/;
@@ -63,11 +55,7 @@ export const Validator = {
     },
     validDateStart: (d_Start) => {
         const date_to_valide = new Date(convertDate(d_Start));
-        // console.log('date_to_valide validDateStart');
-        // console.log(date_to_valide);
         const start = new Date();
-        // console.log('validDateStart START');
-        // console.log(start);
         const startDate = new Date(
             convertDate(
                 new Date(
@@ -77,7 +65,6 @@ export const Validator = {
                 )
             )
         );
-        // console.log('startDate' + startDate);
         return startDate - date_to_valide <= 0 ? true : false;
     },
 };
